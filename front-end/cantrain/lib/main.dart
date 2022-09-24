@@ -12,6 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: Navigator(
+        pages: [
+          MaterialPage(child: HomeView(title: 'CanTrain'))
+        ],
+        onPopPage: (route, result) {
+          return route.didPop(result);
+        },
+      ),
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -25,7 +33,6 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeView(title: 'CanTrain'),
     );
   }
 }

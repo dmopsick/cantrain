@@ -56,7 +56,11 @@ class HomeView extends StatelessWidget {
             const SizedBox(height: 30),
             ElevatedButton(
               style: style,
-              onPressed: () {},
+              onPressed: () {
+                  Navigator.push(context,
+                  
+                  )
+              },
               child: const Text('New User'),
             ),
             const SizedBox(height: 30),
