@@ -63,6 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // Add some styling to the buttons
+    final ButtonStyle style = ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 40));
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -95,12 +99,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text('Welcome!'),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              style: style,
+              onPressed: () {},
+              child: const Text('New User'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const SizedBox(height: 30),
+            ElevatedButton(
+              style: style,
+              onPressed: () {},
+              child: const Text('Existing User'),
             ),
           ],
         ),
