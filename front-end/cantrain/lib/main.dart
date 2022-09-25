@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           return route.didPop(result);
         },
       ),
-      title: 'Flutter Demo',
+      title: 'CanTrain',
       theme: ThemeData(
         // This is the theme of your application.
         //

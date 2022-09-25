@@ -59,7 +59,10 @@ class HomeView extends StatelessWidget {
             ElevatedButton(
               style: style,
               onPressed: () {
-                  return ExistingUserLoginView(title: 'Danny');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ExistingUserLoginView(title: this.title)),
+                );
               },
               child: const Text('Existing User'),
             ),
