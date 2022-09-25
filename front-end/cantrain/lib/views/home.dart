@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '/views/existingUserLogin.dart';
+import '/views/newUserLogin.dart';
 
 class HomeView extends StatelessWidget {
     HomeView({super.key, required this.title});
@@ -57,17 +59,20 @@ class HomeView extends StatelessWidget {
             ElevatedButton(
               style: style,
               onPressed: () {
-                  Navigator.push(context,
-                  
-                  )
+                  return ExistingUserLoginView(title: 'Danny');
               },
-              child: const Text('New User'),
+              child: const Text('Existing User'),
             ),
             const SizedBox(height: 30),
             ElevatedButton(
               style: style,
-              onPressed: () {},
-              child: const Text('Existing User'),
+              onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewUserLoginView(title: this.title)),
+                  );
+              },
+              child: const Text('New User'),
             ),
           ],
         ),

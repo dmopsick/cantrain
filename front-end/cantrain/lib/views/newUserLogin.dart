@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-class NewUserLoginView extends StatefulWidget {
+class NewUserLoginView extends StatelessWidget {
     NewUserLoginView({super.key, required this.title});
 
     final String title;
@@ -10,10 +9,11 @@ class NewUserLoginView extends StatefulWidget {
     Widget build(BuildContext context) {
 
         return Scaffold(
-        appBar: AppBar(
-            // Here we take the value from the MyHomePage object that was created by
-            // the App.build method, and use it to set our appbar title.
-            title: Text(title),
+            appBar: AppBar(
+                // Here we take the value from the MyHomePage object that was created by
+                // the App.build method, and use it to set our appbar title.
+                title: Text(title),
+            ),
             body: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -22,8 +22,7 @@ class NewUserLoginView extends StatefulWidget {
                     ],
                 ),
             ),
-        ),
-
+     
         );
 
     }
