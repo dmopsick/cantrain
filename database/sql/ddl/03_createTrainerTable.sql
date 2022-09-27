@@ -3,6 +3,6 @@
 -----------------------------------------
 
 CREATE TABLE TRAINER (
-    TRAINER_ID      INTEGER NOT NULL,
-    USER_ID         INTEGER NOT NULL
+    TRAINER_ID      INT NOT NULL,
+    USER_ID         INT NOT NULL
 );
