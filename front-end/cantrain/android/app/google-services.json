@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "425822633989",
+    "project_id": "cantrain-3b05d",
+    "storage_bucket": "cantrain-3b05d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425822633989:android:28dbbbe91e798684e1dc6c",
+        "android_client_info": {
+          "package_name": "com.example.cantrain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425822633989-gnugkfp1s0u79sq4ih2e3bt7pfq8qj8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZxzfxvLlIoEZxK-l2lQLe53VGuua1Yz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425822633989-gnugkfp1s0u79sq4ih2e3bt7pfq8qj8o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425822633989-nlphesp9qam6bom3i0hbql4hv29g9pvp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cantrain"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
