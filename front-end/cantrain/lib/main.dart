@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import '/views/home.dart';
+import '/views/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Init the connection to Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -14,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Navigator(
         pages: [
-          MaterialPage(child: HomeView(title: 'CanTrain'))
+          MaterialPage(child: LoginView())
         ],
         onPopPage: (route, result) {
           return route.didPop(result);
