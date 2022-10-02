@@ -13,17 +13,52 @@ class _LoginViewState extends State<LoginView> {
     Widget build(BuildContext context) {
 
         return Scaffold(
+            backgroundColor: Colors.blueGrey[300],
             body: SafeArea(
               child: Center(
                 child: Column(
-                  children : const [
-                    // CanTrain header
-                    Text('CanTrain'),
+                  children : [
+                    const SizedBox(height: 50),
+                    const Text(
+                      'CanTrain',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 36,
+                      ),
+                    ),
             
-                    // Flavor text
-                    Text('Empowering and connecting trainers and their clients')
+                    const SizedBox(height: 10),
+
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        'Empowering trainers and connecting them to their clients',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
             
                     // Email input
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding:  EdgeInsets.only(left: 25),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Email'
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
             
                     // Password input
             
