@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginView extends StatefulWidget {
     const LoginView({super.key});
@@ -13,17 +14,23 @@ class _LoginViewState extends State<LoginView> {
     Widget build(BuildContext context) {
 
         return Scaffold(
-            backgroundColor: Colors.blueGrey[300],
+            backgroundColor: Colors.blueGrey[200],
             body: SafeArea(
               child: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children : [
-                    const SizedBox(height: 50),
-                    const Text(
+                    const Icon(
+                      Icons.fitness_center,
+                      size: 100
+                    ),
+                    
+                    const SizedBox(height: 75),
+                    
+                    Text(
                       'CanTrain',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 36,
+                      style: GoogleFonts.bebasNeue(
+                        fontSize: 48
                       ),
                     ),
             
@@ -39,6 +46,8 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
             
+                    const SizedBox(height: 20),
+
                     // Email input
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -60,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
             
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
 
                     // Password input
                      Padding(
@@ -98,14 +107,39 @@ class _LoginViewState extends State<LoginView> {
                         child: const Center(
                           child: Text('Sign In',
                             style: TextStyle(
-                              color: Colors.white
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             )
                           ),
                       ),
                         ),
                     ),
             
-                    // New user register
+                  const SizedBox(height: 20),
+
+                  // New user register
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Create Client Account ',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        ' Create Trainer Account',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                    ],
+                  ),
+
+
                 ]),
               ),
             ),
