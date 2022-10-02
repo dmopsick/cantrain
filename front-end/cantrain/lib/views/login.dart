@@ -60,9 +60,50 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
             
+                    const SizedBox(height: 20),
+
                     // Password input
-            
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding:  EdgeInsets.only(left: 25),
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Password'
+                            ),
+                          ),
+                        ),
+                      ),
+                    ), 
+
+                    const SizedBox(height: 20),
+
                     // Log in button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[900],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Center(
+                          child: Text('Sign In',
+                            style: TextStyle(
+                              color: Colors.white
+                            )
+                          ),
+                      ),
+                        ),
+                    ),
             
                     // New user register
                 ]),
