@@ -2,11 +2,11 @@
 ---- DDL Statements for the ASSIGNED_WORKOUT Table
 ---------------------------------------------------
 
-CREATE TABLE ASSIGNED_WORKOUT (
+CREATE TABLE WORKOUT (
     ASSIGNED_WORKOUT_ID INT NOT NULL AUTO_INCREMENT,
     REGIMENT_ID         INT NOT NULL,
     WORKOUT_NAME        VARCHAR(256) NOT NULL,
-    WORKOUT_ORDER       TINYINT NOT NULL
+    WORKOUT_DESCRIPTION TEXT
 );
 
 -- DDL Statements for indexes on ASSIGNED_WORKOUT Table
