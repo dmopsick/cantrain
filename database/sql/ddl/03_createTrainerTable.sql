@@ -3,8 +3,11 @@
 -----------------------------------------
 
 CREATE TABLE TRAINER (
-    TRAINER_ID      INT NOT NULL AUTO_INCREMENT,
-    USER_ID         INT NOT NULL
+    TRAINER_ID            INT NOT NULL AUTO_INCREMENT,
+    USER_ID               INT NOT NULL,
+    TRAINER_WEBSITE_URL   VARCHAR(256),
+    TRAINER_YOUTUBE_URL   VARCHAR(256),
+    TRAINER_INSTAGRAM_URL VARCHAR(256)
 );
 
 -- DDL Statements for indexes on TRAINER Table
