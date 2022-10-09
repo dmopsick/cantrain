@@ -2,7 +2,7 @@
 ---- DDL Statements for the ASSIGNED_EXERCISE Table
 ----------------------------------------------------
 
-CREATE TABLE ASSIGNED_EXERCISE (
+CREATE TABLE CANTRAINDB.ASSIGNED_EXERCISE (
     ASSIGNED_EXERCISE       INT NOT NULL AUTO_INCREMENT.
     WORKOUT_ID              INT NOT NULL,
     EXERCISE_ID             INT NOT NULL,

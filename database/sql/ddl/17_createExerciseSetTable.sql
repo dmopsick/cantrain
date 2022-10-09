@@ -2,7 +2,7 @@
 ---- DDL Statements for the EXERCISE_SET Table
 ----------------------------------------------------
 
-CREATE TABLE EXERCISE_SET (
+CREATE TABLE CANTRAINDB.EXERCISE_SET (
     EXERCISE_SET_ID      INT NOT NULL AUTO_INCREMENT,
     EXECUTED_EXERCISE_ID INT NOT NULL,
     SET_WEIGHT           TINYINT,

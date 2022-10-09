@@ -2,7 +2,7 @@
 ---- DDL Statements for the EXERCISE Table
 -------------------------------------------
 
-CREATE TABLE EXERCISE (
+CREATE TABLE CANTRAINDB.EXERCISE (
     EXERCISE_ID           INT NOT NULL AUTO_INCREMENT,
     TRAINER_ID            INT NOT NULL,
     EXERCISE_NAME         VARCHAR(256) NOT NULL,

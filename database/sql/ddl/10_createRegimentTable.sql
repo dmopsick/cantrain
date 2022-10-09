@@ -2,7 +2,7 @@
 ---- DDL Statements for the REGIMENT Table
 -------------------------------------------
 
-CREATE TABLE REGIMENT (
+CREATE TABLE CANTRAINDB.REGIMENT (
     REGIMENT_ID        INT NOT NULL AUTO_INCREMENT,
     TRAINER_ID         INT NOT NULL,
     REGIMENT_NAME         VARCHAR(128) NOT NULL,
