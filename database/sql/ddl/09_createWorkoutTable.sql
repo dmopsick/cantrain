@@ -1,6 +1,6 @@
----------------------------------------------------
----- DDL Statements for the WORKOUT Table
----------------------------------------------------
+-- -------------------------------------------------
+-- -- DDL Statements for the WORKOUT Table
+-- -------------------------------------------------
 
 CREATE TABLE CANTRAINDB.WORKOUT (
     WORKOUT_ID          INT NOT NULL AUTO_INCREMENT,
@@ -12,11 +12,11 @@ CREATE TABLE CANTRAINDB.WORKOUT (
 
 -- DDL Statements for indexes on ASSIGNED_WORKOUT Table
 CREATE UNIQUE INDEX WORKOUT_UNQ1
-ON WORKOUT (WORKOUT_ID);
+ON CANTRAINDB.WORKOUT (WORKOUT_ID);
 
 CREATE INDEX WORKOUT_IDX2
-ON WORKOUT (TRAINER_ID);
+ON CANTRAINDB.WORKOUT (TRAINER_ID);
 
 -- DDL Statement for Foreign Keys on ASSIGNED_WORKOUT Table
-ALTER TABLE WORKOUT
-ADD FOREIGN KEY (TRAINER_ID) REFERENCES TRAINER (TRAINER_ID);
+ALTER TABLE CANTRAINDB.WORKOUT
+ADD FOREIGN KEY (TRAINER_ID) REFERENCES CANTRAINDB.TRAINER (TRAINER_ID);

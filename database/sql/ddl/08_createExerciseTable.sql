@@ -1,6 +1,6 @@
--------------------------------------------
----- DDL Statements for the EXERCISE Table
--------------------------------------------
+-- -----------------------------------------
+-- -- DDL Statements for the EXERCISE Table
+-- -----------------------------------------
 
 CREATE TABLE CANTRAINDB.EXERCISE (
     EXERCISE_ID           INT NOT NULL AUTO_INCREMENT,
@@ -14,11 +14,11 @@ CREATE TABLE CANTRAINDB.EXERCISE (
 
 -- DDL Statements for indexes on EXERCISE Table
 CREATE UNIQUE INDEX EXERCISE_UNQ1
-ON EXERCISE (EXERCISE_ID);
+ON CANTRAINDB.EXERCISE (EXERCISE_ID);
 
 CREATE INDEX EXERCISE_IDX2
-ON EXERCISE (TRAINER_ID);
+ON CANTRAINDB.EXERCISE (TRAINER_ID);
 
 -- DDL Statement for Foreign Keys on EXERCISE Table
-ALTER TABLE EXERCISE
-ADD FOREIGN KEY (TRAINER_ID) REFERENCES TRAINER(TRAINER_ID);
+ALTER TABLE CANTRAINDB.EXERCISE
+ADD FOREIGN KEY (TRAINER_ID) REFERENCES CANTRAINDB.TRAINER (TRAINER_ID);

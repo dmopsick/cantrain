@@ -1,6 +1,6 @@
------------------------------------------
----- DDL Statements for the CLIENT Table
------------------------------------------
+-- ---------------------------------------
+-- -- DDL Statements for the CLIENT Table
+-- ---------------------------------------
 
 CREATE TABLE CANTRAINDB.CLIENT (
     CLIENT_ID      INT NOT NULL AUTO_INCREMENT,
@@ -10,11 +10,11 @@ CREATE TABLE CANTRAINDB.CLIENT (
 
 -- DDL Statements for indexes on CLIENT Table
 CREATE UNIQUE INDEX CLIENT_UNQ1
-ON CLIENT (CLIENT_ID);
+ON CANTRAINDB.CLIENT (CLIENT_ID);
 
 CREATE INDEX CLIENT_IDX2
-ON CLIENT (USER_ID);
+ON CANTRAINDB.CLIENT (USER_ID);
 
 -- DDL Statement for Foreign Keys on CLIENT Table
-ALTER TABLE CLIENT
-ADD FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID);
+ALTER TABLE CANTRAINDB.CLIENT
+ADD FOREIGN KEY (USER_ID) REFERENCES CANTRAINDB.USER (USER_ID);

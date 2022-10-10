@@ -1,6 +1,6 @@
--------------------------------------------
----- DDL Statements for the ASSIGNED_REGIMENT Table
--------------------------------------------
+-- -----------------------------------------
+-- -- DDL Statements for the ASSIGNED_REGIMENT Table
+-- -----------------------------------------
 
 CREATE TABLE CANTRAINDB.ASSIGNED_REGIMENT (
     ASSIGNED_REGIMENT_ID INT NOT NULL AUTO_INCREMENT,
