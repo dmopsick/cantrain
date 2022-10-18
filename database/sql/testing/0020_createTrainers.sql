@@ -3,4 +3,4 @@ INSERT INTO CANTRAINDB.TRAINER(TRAINER_ID, USER_ID, TRAINER_WEBSITE_URL, TRAINER
 VALUES (10, 1, 'https://vanderbilt.edu', 'https://www.youtube.com', null);
 
 INSERT INTO CANTRAINDB.TRAINER(TRAINER_ID, USER_ID, TRAINER_WEBSITE_URL, TRAINER_YOUTIBE_URL, TRAINER_INSTAGRAM_URL)
-VALUES (20, 1, null, null, 'https://www.instagram.com/vanderbiltu/');
+VALUES (20, 2, null, null, 'https://www.instagram.com/vanderbiltu/');

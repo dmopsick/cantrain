@@ -1,3 +1,4 @@
+-- Create 4 client records
 INSERT INTO CANTRAINDB.CLIENT (CLIENT_ID, USER_ID)
 VALUES (20, 3);
 
