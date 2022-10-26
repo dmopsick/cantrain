@@ -207,7 +207,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/cantrain-api/dev/1666227195761-2022-10-20T00:53:15.761Z/cantrain-api.zip"
+          "S3Key": "serverless/cantrain-api/dev/1666823628136-2022-10-26T22:33:48.136Z/cantrain-api.zip"
         },
         "Handler": "s_api.handler",
         "Runtime": "nodejs14.x",
@@ -225,14 +225,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionQmeUcCjH3lfo6NLreJtWoDfJxo4MNMmCOzeQnylscEs": {
+    "ApiLambdaVersionOj6oWDQToaKNBN8Ys1bO0ixxzQWtdpwPDZQbvBoaD8U": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "H9UTQJGxpFufPlPY3Mzp/5sRlEwXZvL/6VdMac0PFe4="
+        "CodeSha256": "9kSR9F31vuGgtEPMIO7aa6rBsbGdUzUpbOM5aQx9F8Q="
       }
     },
     "HttpApi": {
@@ -389,7 +389,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionQmeUcCjH3lfo6NLreJtWoDfJxo4MNMmCOzeQnylscEs"
+        "Ref": "ApiLambdaVersionOj6oWDQToaKNBN8Ys1bO0ixxzQWtdpwPDZQbvBoaD8U"
       },
       "Export": {
         "Name": "sls-cantrain-api-dev-ApiLambdaFunctionQualifiedArn"

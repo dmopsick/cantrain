@@ -2,6 +2,16 @@ const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 
+const awsServerlessExpress = require('aws-serverless-express');
+const app = require('./src/index');
+
+const server = awsServerlessExpress.createServer(app);
+
+module.handler = (event, context) => {
+  return awsServerlessExpress.proxy(server, event, context);
+}
+
+/*
 app.get("/", (req, res, next) => {
   return res.status(200).json({
     message: "Hello from root!",
@@ -21,3 +31,4 @@ app.use((req, res, next) => {
 });
 
 module.exports.handler = serverless(app);
+*/
