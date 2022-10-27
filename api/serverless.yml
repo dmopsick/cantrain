@@ -8,7 +8,14 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  api:
+  app-api:
     handler: handler.handler
     events:
-      - httpApi: '*'
+      - http:
+          path: '/'
+          method: get
+          cors: true
+      - http:
+          path: '{proxy+}'
+          method: any
+          cors: true
