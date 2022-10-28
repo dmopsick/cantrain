@@ -16,13 +16,9 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/findByEmail/:email', async (req, res) => {
-   
     const email = req.params.email;
     // Need to validate email
     const user = await getUserByEmail(email);
-
-    console.log("FLAG 10");
-    console.log(user);
 
     res.status(200).json(user);
 });
