@@ -1,5 +1,6 @@
 const express = require('express');
 
+// Load the database functions to use in this file
 const {
     getUserByEmail : getUserByEmail
 } = require('../database');
