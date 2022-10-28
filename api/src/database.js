@@ -18,8 +18,24 @@ const pool = mysql.createPool({
     database: db
 }).promise();
 
-const result = await pool.query("SELECT * FROM USER");
-const rows = result[0]
+export async function getUserByEmail(email) {
+    const [user] = await pool.query(`
+        SELECT * FROM USER
+        WHERE USER_EMAIL = '${email}'
+    `);
+    return user;
+}
 
-console.log(rows);
-console.log("Flag 2");
+/*
+async function main() {
+    const testUser = await getUserByEmail('danmopsick@gmail.com');
+    console.log(testUser);
+} */
+
+// To verify functionality
+// main();
+
+module.exports = {
+    getUserByEmail
+}
+

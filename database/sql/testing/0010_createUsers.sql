@@ -10,7 +10,7 @@ INSERT INTO CANTRAINDB.USER (USER_ID, USER_EMAIL, USER_FIRST_NAME, USER_LAST_NAM
 VALUES (3, 'mike.client@hotmail.com', 'Mike', 'Monkey', 'Michael', True, True);
 
 INSERT INTO CANTRAINDB.USER (USER_ID, USER_EMAIL, USER_FIRST_NAME, USER_LAST_NAME, USER_PREFERRED_NAME, USER_ACTIVE, UNITS_OF_MEASUREMENT_SWITCH)
-VALUES (4, 'dan.mopsick@gmail.com', 'Daniel', 'Mopick', 'Dan', True, True);
+VALUES (4, 'danmopsick@gmail.com', 'Daniel', 'Mopick', 'Dan', True, True);
 
 INSERT INTO CANTRAINDB.USER (USER_ID, USER_EMAIL, USER_FIRST_NAME, USER_LAST_NAME, USER_PREFERRED_NAME, USER_ACTIVE, UNITS_OF_MEASUREMENT_SWITCH)
 VALUES (5, 'janet.fitness@aol.com', 'Janet', "Shloople", null, True, True);
