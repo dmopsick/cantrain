@@ -1,5 +1,9 @@
 const express = require('express');
 
+const {
+    getUserByEmail : getUserByEmail
+} = require('../database');
+
 
 const routes = express.Router({
     mergeParams: true
@@ -11,15 +15,16 @@ routes.get('/', (req, res) => {
     res.status(200).json({'message' : 'Hello Dan!'});
 });
 
-routes.get('/findByEmail/:email', (req, res) => {
+routes.get('/findByEmail/:email', async (req, res) => {
    
     const email = req.params.email;
     // Need to validate email
-   
-    
-  
+    const user = await getUserByEmail(email);
 
-    res.status(200).json({});
+    console.log("FLAG 10");
+    console.log(user);
+
+    res.status(200).json(user);
 });
 
 module.exports = {

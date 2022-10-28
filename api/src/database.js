@@ -1,5 +1,6 @@
-import mysql from 'mysql2';
-import dotenv from 'dotenv';
+const mysql = require('mysql2');
+const dotenv = require('dotenv')
+
 
 // Load the MySQL creds from .env
 dotenv.config();
@@ -18,7 +19,7 @@ const pool = mysql.createPool({
     database: db
 }).promise();
 
-export async function getUserByEmail(email) {
+async function getUserByEmail(email) {
     const [user] = await pool.query(`
         SELECT * FROM USER
         WHERE USER_EMAIL = '${email}'
