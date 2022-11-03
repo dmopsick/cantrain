@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cantrain/models/dbuser.dart';
+import 'package:cantrain/services/api_service.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -9,30 +11,61 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  // The authenticated user object from FireBase
+  final authUser = FirebaseAuth.instance.currentUser!;
+  // The current user's info from the DB
+  DBUser? currentUser;
+  var isLoaded = false;
 
-  final user = FirebaseAuth.instance.currentUser!;
+  @override
+  void initState() {
+    super.initState();
+
+      // Load the current user's info from the DB
+     currentUser = loadUser(authUser.email);
+  }
+
+  // I will need to call this function from every file
+  // Will need to house it somewhere else and import it or something
+  loadUser(email) async {
+    DBUser? user;
+
+    // Load the user from the API
+    user = await ApiService().getUserByEmail(email);
+
+    if (user != null) {
+      isLoaded = true;
+    }
+
+    return user;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Signed in as ' + user.email!),
-            MaterialButton (
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.indigo[700],
-              child: Text(
-                'Sign Out',
-                style : TextStyle (color: Colors.white),
-              ),
-            )
-          ],
-        ),
-        ),
+    
+    return Visibility(
+      // Show the UI after loading what we need from the DB
+      visible: isLoaded,
+      child: Scaffold (
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName}'),
+              MaterialButton (
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                color: Colors.indigo[700],
+                child: Text(
+                  'Sign Out',
+                  style : TextStyle (color: Colors.white),
+                ),
+              )
+            ],
+          ),
+          ),
+      ),
     );
   }
 }

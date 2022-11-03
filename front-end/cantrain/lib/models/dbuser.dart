@@ -1,5 +1,10 @@
+import 'dart:convert';
 
-class User {
+DBUser userFromJson(String jsonString) => DBUser.fromJson(json.decode(jsonString)[0]);
+
+String userToJson(DBUser user) => json.encode(user.toJson());
+
+class DBUser {
   
   // Define the field names used in the JSON
   static const String jsonId = 'USER_ID';
@@ -10,7 +15,7 @@ class User {
   static const String jsonActive = 'USER_ACTIVE';
   static const String jsonUnitsOfMeasurementSwitch = 'UNITS_OF_MEASUREMENT_SWITCH';
 
-  User({
+  DBUser({
     required this.id,
     required this.email,
     required this.firstName,
@@ -24,11 +29,11 @@ class User {
   String email;
   String firstName;
   String lastName;
-  String preferredName;
+  String? preferredName;
   bool active;
   bool unitsOfMeasurementSwitch; // Will determine whether to show the user imperial or metric system, will hold off on this for now 
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory DBUser.fromJson(Map<String, dynamic> json) => DBUser(
     id: json[jsonId],
     email: json[jsonEmail],
     firstName: json[jsonFirstName],
