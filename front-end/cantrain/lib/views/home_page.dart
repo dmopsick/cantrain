@@ -22,22 +22,24 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
 
       // Load the current user's info from the DB
-     currentUser = loadUser(authUser.email);
+     loadUser(authUser.email);
   }
 
   // I will need to call this function from every file
   // Will need to house it somewhere else and import it or something
   loadUser(email) async {
-    DBUser? user;
+    // DBUser? user;
 
     // Load the user from the API
-    user = await ApiService().getUserByEmail(email);
+    currentUser = await ApiService().getUserByEmail(email);
 
-    if (user != null) {
-      isLoaded = true;
+    if (currentUser != null) {
+      setState(() {
+        isLoaded = true;
+      });
     }
 
-    return user;
+    // return user;
   }
 
   @override
@@ -51,13 +53,13 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName}'),
+              Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName} ${currentUser?.lastName}'),
               MaterialButton (
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                 },
                 color: Colors.indigo[700],
-                child: Text(
+                child: const Text(
                   'Sign Out',
                   style : TextStyle (color: Colors.white),
                 ),

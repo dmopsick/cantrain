@@ -7,6 +7,7 @@ class ApiService {
   static const String apiBaseUrl = 'https://1r3rc9zvq0.execute-api.us-east-1.amazonaws.com/dev';
 
   Future<DBUser?> getUserByEmail(email) async {
+    var user;
     var client = http.Client();
     var url = Uri.parse('${apiBaseUrl}/user/findByEmail/$email');
    
@@ -17,10 +18,12 @@ class ApiService {
 
       print("FLAG 11: $json");
 
-      print("FLAG 12 ${userFromJson(json).firstName}");
-      return userFromJson(json);
+      user = userFromJson(json);
+
+      print("FLAG 12 ${user.firstName} ${user.lastName}");
     }
 
+    return user;
   }
 
 }

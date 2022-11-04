@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cantrain/utils/util.dart';
 
 DBUser userFromJson(String jsonString) => DBUser.fromJson(json.decode(jsonString)[0]);
 
@@ -20,7 +21,7 @@ class DBUser {
     required this.email,
     required this.firstName,
     required this.lastName,
-    this.preferredName = "",
+    this.preferredName = '',
     required this.active,
     required this.unitsOfMeasurementSwitch,
   });
@@ -39,8 +40,8 @@ class DBUser {
     firstName: json[jsonFirstName],
     lastName: json[jsonLastName],
     preferredName: json[jsonPreferredName],
-    active: json[jsonActive],
-    unitsOfMeasurementSwitch: json[jsonUnitsOfMeasurementSwitch]
+    active: Util().convertShortToBool(json[jsonActive]),
+    unitsOfMeasurementSwitch: Util().convertShortToBool(json[jsonUnitsOfMeasurementSwitch])
   );
 
   Map<String, dynamic> toJson() => {
