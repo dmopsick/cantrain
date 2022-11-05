@@ -16,14 +16,22 @@ class ApiService {
     if (response.statusCode == 200) {
       var json = response.body;
 
-      print("FLAG 11: $json");
-
       user = userFromJson(json);
-
-      print("FLAG 12 ${user.firstName} ${user.lastName}");
     }
 
     return user;
   }
+
+  // Is User Trainer
+
+  // Get Trainer by user
+
+  // Get Client by user
+
+  // Get clients by trainer
+
+  // Get Regiments by client
+
+
 
 }
