@@ -22,21 +22,40 @@ const pool = mysql.createPool({
 async function getUserByEmail(email) {
     const [user] = await pool.query(`
         SELECT * FROM USER
-        WHERE USER_EMAIL = '${email}'
+        WHERE USER_EMAIL = '${email}';
     `);
     return user;
 }
 
-/*
-async function main() {
-    const testUser = await getUserByEmail('danmopsick@gmail.com');
-    console.log(testUser);
-} */
+// Load Trainer data with user data nested in, will always want user info with trainer
+async function getTrainerByEmail(email) {
+    const [trainer] = await pool.query(`
+        SELECT * FROM CANTRAINDB.TRAINER t
+        INNER JOIN CANTRAINDB.USER u u.USER_ID = t.USER_ID
+        WHERE u.USER_EMAIL;
+    `);
+    return trainer;
+}
 
-// To verify functionality
-// main();
+async function getTrainerById(id) {
+    
+}
+
+// Load the Client info with the user data nested in, will always want the user data with client
+async function getClientByEmail(email) {
+
+}
+
+async function getClientListByTrainer(trainerId) {
+
+}
+
+async function getAssignedRegimentsByClient(clientId) {
+
+}
 
 module.exports = {
-    getUserByEmail
+    getUserByEmail,
+    getTrainerByEmail
 }
 
