@@ -1,4 +1,6 @@
+import 'package:cantrain/views/account_page.dart';
 import 'package:cantrain/views/home_dashboard_page.dart';
+import 'package:cantrain/views/records_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -17,8 +19,8 @@ class _HomeViewState extends State<HomeView> {
   int selectedBottomNavIndex = 0;
   final List<Widget> pages = [
     const HomeDashboardView(),
-    // RecordsView(),
-    // AccountView()
+    const RecordsView(),
+    const AccountView()
   ];
 
   @override
@@ -26,12 +28,11 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
-    void navigate(int index) {
-      setState(() {
-        selectedBottomNavIndex = index;
-      });
-
-    }
+  void navigate(int index) {
+    setState(() {
+      selectedBottomNavIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,7 @@ class _HomeViewState extends State<HomeView> {
             gap: 8,
             onTabChange: (index) {
               print(index);
+              navigate(index);
             },
             backgroundColor: Colors.blue.shade900,
             color: Colors.white,
