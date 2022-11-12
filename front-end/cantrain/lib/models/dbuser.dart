@@ -1,4 +1,4 @@
-// import 'dart:convert';
+import 'dart:convert';
 import 'package:cantrain/utils/util.dart';
 
 DBUser userFromJson(String jsonString) => DBUser.fromJson(json.decode(jsonString)[0]);

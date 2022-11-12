@@ -9,7 +9,7 @@ class ApiService {
   Future<DBUser?> getUserByEmail(email) async {
     var user;
     var client = http.Client();
-    var url = Uri.parse('${apiBaseUrl}/user/findByEmail/$email');
+    var url = Uri.parse('$apiBaseUrl/user/findByEmail/$email');
    
     var response = await client.get(url);
 
