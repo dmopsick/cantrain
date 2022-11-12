@@ -18,7 +18,7 @@ class _MainViewState extends State<MainView> {
       body: StreamBuilder<User?>(stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomeView();
+          return const HomeView();
         } else {
           return const LoginView();
         }
@@ -26,7 +26,6 @@ class _MainViewState extends State<MainView> {
       
       )
     );
-    
   }
 
 }
