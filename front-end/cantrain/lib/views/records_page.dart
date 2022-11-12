@@ -11,7 +11,7 @@ class RecordsView extends StatefulWidget {
 class _RecordsViewState extends State<RecordsView> {
   // The authenticated user object from FireBase
   final authUser = FirebaseAuth.instance.currentUser!;
-  bool isLoaded = true;
+  bool isLoaded = false;
 
   @override
   void initState() {

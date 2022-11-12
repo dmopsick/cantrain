@@ -20,6 +20,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   @override
   void initState() {
     super.initState();
+    
     loadUser(authUser.email);
   }
 
