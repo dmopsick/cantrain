@@ -1,7 +1,10 @@
+import 'package:cantrain/models/trainer.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cantrain/models/dbuser.dart';
 import 'package:cantrain/services/api_service.dart';
+
+import '../models/client.dart';
 
 class HomeDashboardView extends StatefulWidget {
   const HomeDashboardView({super.key});
@@ -16,6 +19,8 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   bool isLoaded = false;
   // The current user's info from the DB
   DBUser? currentUser;
+  Client? client;
+  Trainer? trainer;
 
   @override
   void initState() {
