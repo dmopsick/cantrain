@@ -21,12 +21,27 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   DBUser? currentUser;
   Client? client;
   Trainer? trainer;
+  List<AssignedRegiment> assignedRegimentList;
 
   @override
   void initState() {
     super.initState();
     
+    // Load the user record
     loadUser(authUser.email);
+
+    if (currentUser != null) {
+      // Attempt to load a trainer record
+      // loadTrainer()
+
+      // Attempt to load a client record
+      loadClient();
+
+      if (client != null) {
+
+      }
+    }
+
   }
 
   // I will need to call this function from every file

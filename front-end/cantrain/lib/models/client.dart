@@ -6,11 +6,11 @@ String clientToJson(Client client) => json.encode(client.toJson());
 
 class Client {
 
-  static const String jsonId = "TRAINER_ID";
-  static const String jsonTrainerUserId = "USER_ID";
-  static const String jsonWebsiteUrl = "TRAINER_WEBSITE_URL";
-  static const String jsonYoutubeUrl = "TRAINER_YOUTUBE_URL";
-  static const String jsonInstagramUrl = "TRAINER_INSTAGRAM_URL";
+  static const String jsonId = 'TRAINER_ID';
+  static const String jsonTrainerUserId = 'USER_ID';
+  static const String jsonWebsiteUrl = 'TRAINER_WEBSITE_URL';
+  static const String jsonYoutubeUrl = 'TRAINER_YOUTUBE_URL';
+  static const String jsonInstagramUrl = 'TRAINER_INSTAGRAM_URL';
 
   Client({
     required this.id,
