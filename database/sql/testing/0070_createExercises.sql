@@ -1,4 +1,5 @@
 -- Create exercise records -- Trainer 1
+-- Push A
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
 VALUES(1, 10, 'Bench Press', 'Barbell bench press', 'https://www.youtube.com/watch?v=HnQGKxU3eds', True);
 
@@ -7,6 +8,17 @@ VALUES(2, 10, 'Behind the Head Shoudler Press', 'Ideally performed on a smith ma
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
 VALUES(3, 10, 'Triceps Dips', 'Start with body weight. Can add weight as you progress', null, True);
+
+INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
+VALUES(19, 10, 'Cable Crossover', 'Can be performed with the cables high or low', null, True);
+
+INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
+VALUES(20, 10, 'Overhead Triceps Pull', 'Pull straight above head ', null, True);
+
+INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
+VALUES(21, 10, 'Seated Lat Raise', 'Slow and controlled', null, True);
+
+-- Pull A
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
 VALUES(4, 10, 'Deadlift', null, null, False);
@@ -27,39 +39,28 @@ INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCIS
 VALUES(9, 10, 'Leg Press', 'Do not let your knees wobble. Keep knees in line with legs', null, False);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(19, 10, 'Cable Crossover', 'Can be performed with the cables high or low', null, True);
+VALUES(10, 10, 'Standing Overhead Press', 'Down to your chin. Do not lockout', null, True);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(20, 10, 'Overhead Triceps Pull', 'Pull straight above head ', null, True);
+VALUES(11, 10, 'Incline Bench Press', 'Barbell or Dumbbell. Can vary.', null, False);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(21, 10, 'Seated Lat Raise', 'Slow and controlled', null, True);
-
--- Trainer 2
+VALUES(12, 10, 'Close Grip Bench Press', null, null, False);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(10, 20, 'Standing Overhead Press', 'Down to your chin. Do not lockout', null, True);
+VALUES(13, 10, 'Wide Grip Dead Lift', null, null, False);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(11, 20, 'Incline Bench Press', 'Barbell or Dumbbell. Can vary.', null, False);
+VALUES(14, 10, 'Standing Barbell Row', 'Bent over.', null, True);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(12, 20, 'Close Grip Bench Press', null, null, False);
+VALUES(15, 10, 'Pull ups', 'Forearms facing away from you', null, True);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(13, 20, 'Wide Grip Dead Lift', null, null, False);
+VALUES(16, 10, 'Front Squat', null, null, False);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(14, 20, 'Standing Barbell Row', 'Bent over.', null, True);
+VALUES(17, 10, 'Romanian Deadlift (RDL)', 'Hinge from hips. Keep legs straight. Go down until you feel it in your hamstrings', null, True);
 
 INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(15, 20, 'Pull ups', 'Forearms facing away from you', null, True);
-
-INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(16, 20, 'Front Squat', null, null, False);
-
-INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(17, 20, 'Romanian Deadlift (RDL)', 'Hinge from hips. Keep legs straight. Go down until you feel it in your hamstrings', null, True);
-
-INSERT INTO CANTRAINDB.EXERCISE (EXERCISE_ID, TRAINER_ID, EXERCISE_NAME, EXERCISE_INSTRUCTIONS, EXERCISE_VIDEO_LINK, PUBLIC_EXERCISE)
-VALUES(18, 20, 'Hip Thrust', 'On the Smith Machine', null, False);
+VALUES(18, 10, 'Hip Thrust', 'On the Smith Machine', null, False);
