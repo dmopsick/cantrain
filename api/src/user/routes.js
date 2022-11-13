@@ -18,7 +18,7 @@ routes.get('/', (req, res) => {
 
 routes.get('/findByEmail/:email', async (req, res) => {
     const email = req.params.email;
-    // Need to validate email
+    // TODO validate email input
     const user = await getUserByEmail(email);
 
     res.status(200).json(user);
