@@ -12,4 +12,16 @@ class Util {
     return result;
   }
 
+  int convertBoolToShort(bool boolToConvert) {
+    int result = -1;
+
+    if (boolToConvert == true) {
+      result = 1;
+    } else {
+      result = 0;
+    }
+    
+    return result;
+  }
+
 }

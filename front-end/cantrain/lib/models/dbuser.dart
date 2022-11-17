@@ -50,8 +50,8 @@ class DBUser {
     jsonFirstName: firstName,
     jsonLastName: lastName,
     jsonPreferredName: preferredName,
-    jsonActive: active,
-    jsonUnitsOfMeasurementSwitch: unitsOfMeasurementSwitch,
+    jsonActive: Util().convertBoolToShort(active),
+    jsonUnitsOfMeasurementSwitch: Util().convertBoolToShort(unitsOfMeasurementSwitch),
   };
 
 }

@@ -44,17 +44,11 @@ class ApiService {
 
       if (response.statusCode == 200) {
         var json = response.body;
- 
-        print("Flag 11 $json");
-        print("Flag 12 $url");
         
-        if (json != []) {
+        if (json.isNotEmpty) {
           dbClient = clientFromJson(json);
         }
 
-       
-
-       
       }
     }
 

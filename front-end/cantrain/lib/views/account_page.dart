@@ -164,6 +164,20 @@ class _AccountViewState extends State<AccountView> {
                           ),
                         ),
                       ),
+
+                      const SizedBox(height: 20),
+                
+                      MaterialButton (
+                        onPressed: () {
+                          FirebaseAuth.instance.signOut();
+                        },
+                        color: Colors.indigo[700],
+                        child: const Text(
+                          'Sign Out',
+                          style : TextStyle (color: Colors.white),
+                        ),
+                      )
+
                     ]),
               ),
             ),

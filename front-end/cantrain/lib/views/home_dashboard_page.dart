@@ -28,37 +28,29 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
     super.initState();
 
     // Load the user record
-    loadUser(authUser.email);
+    loadFromDB(authUser.email);
   }
 
   // I will need to call this function from every file
   // Will need to house it somewhere else and import it or something
-  loadUser(email) async {
+  loadFromDB(email) async {
     // Load the user from the API
     currentUser = await ApiService().getUserByEmail(email);
 
     // If the user is loaded, load the UI
     if (currentUser != null) {
-      // Load the client with the loaded uesr record
-      loadClient();
+
+      // Load the client with the loaded user record
+      client = await ApiService().getClientByUser(currentUser);
+
+      // Load the list of assigned regiments by user
+      // assignedRegimentList 
 
       setState(() {
         isLoaded = true;
       });
     }
   }
-
-  loadClient() async {
-    print("Flag 0 - ${currentUser?.email}");
-
-    // Load the client record for the current user
-    client = await ApiService().getClientByUser(currentUser);
-
-    print("Flag 1 ${client?.id}");
-
-    // Load client record for the current user
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -72,18 +64,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName} ${currentUser?.lastName}'),
-                const SizedBox(height: 20),
-                Text('Client Id is ${client?.id}'), 
-                MaterialButton (
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-                  },
-                  color: Colors.indigo[700],
-                  child: const Text(
-                    'Sign Out',
-                    style : TextStyle (color: Colors.white),
-                  ),
-                )
+                
               ],
             ),
             ),
