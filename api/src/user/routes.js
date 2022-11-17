@@ -5,7 +5,6 @@ const {
     getUserByEmail : getUserByEmail
 } = require('../database');
 
-
 const routes = express.Router({
     mergeParams: true
 });

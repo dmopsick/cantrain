@@ -14,6 +14,10 @@ const {
     routes: clientRoutes,
 } = require('./client/routes');
 
+const {
+    routes: assignedRegimentRoutes,
+} = require('./assignedRegiment/routes');
+
 const app = express();
 
 app.use(cors());
@@ -21,5 +25,6 @@ app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/trainer', trainerRoutes);
 app.use('/client', clientRoutes);
+app.use('/assignedRegiment', assignedRegimentRoutes);
 
 module.exports = app;

@@ -31,8 +31,8 @@ async function getUserByEmail(email) {
 async function getTrainerById(id) {
     const [trainer] = await pool.query(`
         SELECT * FROM CANTRAINDB.TRAINER t
-        INNER JOIN CANTRAINDB.USER
-        ON u u.USER_ID = t.USER_ID
+        INNER JOIN CANTRAINDB.USER u
+        ON u.USER_ID = t.USER_ID
         WHERE t.TRAINER_ID = ${id};
     `);
     return trainer;
@@ -42,6 +42,8 @@ async function getTrainerById(id) {
 async function getClientByUserId(id) {
     const [client] = await pool.query(`
         SELECT * FROM CANTRAINDB.CLIENT c
+        INNER JOIN CANTRAINDB.USER u
+        ON c.USER_ID = u.USER_ID
         WHERE c.USER_ID = ${id};
     `);
     return client;
@@ -51,19 +53,40 @@ async function getClientListByTrainer(trainerId) {
 
 }
 
-async function getAssignedRegimentsByClient(clientId) {
-    const [regiment] = await pool.query(`
+async function getClientListByUser(trainerId) {
+
+}
+
+async function getAssignedRegimentListByClient(clientId) {
+    const [regimentList] = await pool.query(`
         SELECT * FROM CANTRAINDB.ASSIGNED_REGIMENT ar
         INNER JOIN CANTRAINDB.REGIMENT r 
         ON ar.REGIMENT_ID = r.REGIMENT_ID
         WHERE ar.CLIENT_ID = ${clientId};
     `);
-    return regiment;
+    return regimentList;
+}
+
+async function getAssignedRegimentListByUser(userId) {
+    const [regimentList] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_REGIMENT ar
+        INNER JOIN CANTRAINDB.REGIMENT r 
+        ON ar.REGIMENT_ID = r.REGIMENT_ID
+        WHERE ar.CLIENT_ID = (SELECT CLIENT_ID FROM CANTRAINDB.CLIENT c
+        WHERE c.USER_ID = ${userId});
+    `);
+    return regimentList;
+}
+
+// Load the next workout for a user to complete for a regiment
+async function getNextAssignedWorkoutOfAssignedRegiment(assignedRegimentId) {
+    return null;
 }
 
 module.exports = {
     getUserByEmail,
     getTrainerById,
     getClientByUserId,
-    getAssignedRegimentsByClient
+    getAssignedRegimentListByClient,
+    getAssignedRegimentListByUser,
 }
