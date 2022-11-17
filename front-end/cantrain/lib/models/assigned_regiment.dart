@@ -4,8 +4,10 @@ import 'package:cantrain/utils/util.dart';
 import 'package:cantrain/models/regiment.dart';
 
 // From JSON for a list of assigned regiments
+List<AssignedRegiment> assignedRegimentListWithoutClientsFromJson(String jsonString) => List<AssignedRegiment>.from(json.decode(jsonString).map((x) => AssignedRegiment.fromJsonWithoutClient(x))); 
 
 // FROM Json for a single assigned regiment
+String assignedRegimentListToJson(List<AssignedRegiment> assignedRegimentList) => json.encode(List<dynamic>.from(assignedRegimentList.map((x) => x.toJson())));
 
 // To JSON for a single regiment 
 
@@ -69,8 +71,8 @@ class AssignedRegiment {
     jsonId: id,
     jsonRegimentId: regiment.id,
     jsonClientId: clientId,
+    jsonCurrentCycle: currentCycle,
+    jsonActive: active, // Need to convert bool back to
+  };
 
-  }
-
-  
 }

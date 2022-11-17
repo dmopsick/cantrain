@@ -11,7 +11,7 @@ class RecordsView extends StatefulWidget {
 class _RecordsViewState extends State<RecordsView> {
   // The authenticated user object from FireBase
   final authUser = FirebaseAuth.instance.currentUser!;
-  bool isLoaded = false;
+  bool isLoaded = true;
 
   @override
   void initState() {
@@ -28,7 +28,8 @@ class _RecordsViewState extends State<RecordsView> {
           body: Center(
             child: Column(
               children: const [
-                Text('Records Page')
+                SizedBox(height: 200),
+                Text('Records Page not implemented at this time.')
               ],
             )
           )
