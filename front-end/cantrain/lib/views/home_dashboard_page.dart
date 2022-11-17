@@ -21,27 +21,14 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   DBUser? currentUser;
   Client? client;
   Trainer? trainer;
-  List<AssignedRegiment> assignedRegimentList;
+  // List<AssignedRegiment> assignedRegimentList;
 
   @override
   void initState() {
     super.initState();
-    
+
     // Load the user record
     loadUser(authUser.email);
-
-    if (currentUser != null) {
-      // Attempt to load a trainer record
-      // loadTrainer()
-
-      // Attempt to load a client record
-      loadClient();
-
-      if (client != null) {
-
-      }
-    }
-
   }
 
   // I will need to call this function from every file
@@ -52,11 +39,26 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
 
     // If the user is loaded, load the UI
     if (currentUser != null) {
+      // Load the client with the loaded uesr record
+      loadClient();
+
       setState(() {
         isLoaded = true;
       });
     }
   }
+
+  loadClient() async {
+    print("Flag 0 - ${currentUser?.email}");
+
+    // Load the client record for the current user
+    client = await ApiService().getClientByUser(currentUser);
+
+    print("Flag 1 ${client?.id}");
+
+    // Load client record for the current user
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,8 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName} ${currentUser?.lastName}'),
+                const SizedBox(height: 20),
+                Text('Client Id is ${client?.id}'), 
                 MaterialButton (
                   onPressed: () {
                     FirebaseAuth.instance.signOut();

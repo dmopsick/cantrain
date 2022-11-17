@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cantrain/models/dbuser.dart';
 
 Client clientFromJson(String jsonString) => Client.fromJson(json.decode(jsonString)[0]);
 
@@ -6,40 +7,26 @@ String clientToJson(Client client) => json.encode(client.toJson());
 
 class Client {
 
-  static const String jsonId = 'TRAINER_ID';
-  static const String jsonTrainerUserId = 'USER_ID';
-  static const String jsonWebsiteUrl = 'TRAINER_WEBSITE_URL';
-  static const String jsonYoutubeUrl = 'TRAINER_YOUTUBE_URL';
-  static const String jsonInstagramUrl = 'TRAINER_INSTAGRAM_URL';
+  static const String jsonId = 'CLIENT_ID';
+  static const String jsonTrainerUserId = 'USED_ID';
 
   Client({
     required this.id,
-    required this.userId,
-    this.websiteUrl,
-    this.youtubeUrl,
-    this.instagramUrl,
+    required this.user,
   });
 
   int id;
-  String userId;
-  String? websiteUrl;
-  String? youtubeUrl;
-  String? instagramUrl;
+  DBUser user;
 
   factory Client.fromJson(Map<String, dynamic> json) => Client(
     id: json[jsonId],
-    userId: json[jsonTrainerUserId],
-    websiteUrl: json[jsonWebsiteUrl],
-    youtubeUrl: json[jsonYoutubeUrl],
-    instagramUrl: json[jsonInstagramUrl],
+    // Create a nested DBUser model with the provided user fields that are included with all client records
+    user: DBUser.fromJson(json),
   );
 
   Map<String, dynamic> toJson() => {
     jsonId: id,
-    jsonTrainerUserId: userId,
-    jsonWebsiteUrl: websiteUrl,
-    jsonYoutubeUrl: youtubeUrl,
-    jsonInstagramUrl: instagramUrl,
+    jsonTrainerUserId: user.id,
   };
 
 }

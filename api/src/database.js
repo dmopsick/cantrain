@@ -39,8 +39,12 @@ async function getTrainerById(id) {
 }
 
 // Load the Client info with the user data nested in, will always want the user data with client
-async function getCllientbyId(email) {
-
+async function getClientByUserId(id) {
+    const [client] = await pool.query(`
+        SELECT * FROM CANTRAINDB.CLIENT c
+        WHERE c.USER_ID = ${id};
+    `);
+    return client;
 }
 
 async function getClientListByTrainer(trainerId) {
@@ -48,11 +52,18 @@ async function getClientListByTrainer(trainerId) {
 }
 
 async function getAssignedRegimentsByClient(clientId) {
-
+    const [regiment] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_REGIMENT ar
+        INNER JOIN CANTRAINDB.REGIMENT r 
+        ON ar.REGIMENT_ID = r.REGIMENT_ID
+        WHERE ar.CLIENT_ID = ${clientId};
+    `);
+    return regiment;
 }
 
 module.exports = {
     getUserByEmail,
-    getTrainerById
+    getTrainerById,
+    getClientByUserId,
+    getAssignedRegimentsByClient
 }
-
