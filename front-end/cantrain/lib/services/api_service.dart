@@ -38,7 +38,7 @@ class ApiService {
 
     if (user != null) {
       var httpClient = http.Client();
-      var url = Uri.parse('$apiBaseUrl/client/findByEmail/${user.id}');
+      var url = Uri.parse('$apiBaseUrl/client/findByUser/${user.id}');
 
       var response = await httpClient.get(url);
 

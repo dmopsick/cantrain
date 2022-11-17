@@ -10,11 +10,16 @@ const {
     routes: trainerRoutes,
 } = require('./trainer/routes');
 
+const {
+    routes: clientRoutes,
+} = require('./client/routes');
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/trainer', trainerRoutes);
+app.use('/client', clientRoutes);
 
 module.exports = app;

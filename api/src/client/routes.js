@@ -3,7 +3,7 @@ const express = require('express');
 // Load databse functions used in this file
 const {
     getClientByUserId: getClientByUserId
-} = require('..database');
+} = require('../database');
 
 const routes = express.Router({
     mergeParams: true
