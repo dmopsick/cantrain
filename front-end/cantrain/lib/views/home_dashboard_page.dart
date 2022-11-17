@@ -1,10 +1,11 @@
+import 'package:cantrain/models/assigned_regiment.dart';
 import 'package:cantrain/models/trainer.dart';
+import 'package:cantrain/services/assigned_regiment_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cantrain/models/dbuser.dart';
 import 'package:cantrain/services/api_service.dart';
 
-import '../models/client.dart';
 
 class HomeDashboardView extends StatefulWidget {
   const HomeDashboardView({super.key});
@@ -19,9 +20,8 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   bool isLoaded = false;
   // The current user's info from the DB
   DBUser? currentUser;
-  Client? client;
   Trainer? trainer;
-  // List<AssignedRegiment> assignedRegimentList;
+  List<AssignedRegiment>? assignedRegimentList;
 
   @override
   void initState() {
@@ -39,12 +39,8 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
 
     // If the user is loaded, load the UI
     if (currentUser != null) {
-
-      // Load the client with the loaded user record
-      client = await ApiService().getClientByUser(currentUser);
-
-      // Load the list of assigned regiments by user
-      // assignedRegimentList 
+      // Load the assigned regiments for the currentUser 
+      assignedRegimentList = await AssignedRegimentApiService().getAssignedRegimentListByUser(currentUser);
 
       setState(() {
         isLoaded = true;
