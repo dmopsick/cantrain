@@ -73,9 +73,30 @@ async function getAssignedRegimentListByUser(userId) {
         INNER JOIN CANTRAINDB.REGIMENT r 
         ON ar.REGIMENT_ID = r.REGIMENT_ID
         WHERE ar.CLIENT_ID = (SELECT CLIENT_ID FROM CANTRAINDB.CLIENT c
-        WHERE c.USER_ID = ${userId});
+            WHERE c.USER_ID = ${userId});
     `);
     return regimentList;
+}
+
+async function getClientListByTrainer(trainerId) {
+    const [clientList] = await pool.query(`
+        SELECT * FROM CANTRAINDB.CLIENT c
+        INNER JOIN CANTRAINDB.USER u
+        ON u.USER_ID = c.USER_ID
+        WHERE TRAINER_ID = ${trainerId};
+    `);
+    return clientList;
+}
+
+async function getClientListByUser(userId) {
+    const [clientList] = await pool.query(`
+        SELECT * FROM CANTRAINDB.CLIENT c
+        INNER JOIN CANTRAINDB.USER u
+        ON u.USER_ID = c.USER_ID
+        WHERE TRAINER_ID = (SELECT TRAINER_ID FROM CORE.TRAINER t
+            WHERE t.USER_ID = ${userId});
+    `);
+    return clientList;
 }
 
 // Load the next workout for a user to complete for a regiment
