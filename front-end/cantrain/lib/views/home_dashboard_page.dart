@@ -42,6 +42,9 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
       // Load the assigned regiments for the currentUser 
       assignedRegimentList = await AssignedRegimentApiService().getAssignedRegimentListByUser(currentUser);
 
+      print('Flag 1 ${assignedRegimentList![0].id}');
+      print('Flag 2 ${assignedRegimentList![0].regiment.name}');
+
       setState(() {
         isLoaded = true;
       });
@@ -59,8 +62,16 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName} ${currentUser?.lastName}'),
-                
+                const SizedBox(height: 100),
+                Center(child: Text('Hello ${currentUser?.firstName}')),
+                // ListView.builder(
+                //   itemCount: assignedRegimentList?.length,
+                //   itemBuilder: (context, index) {
+                //     return Center(
+                //       child: Text('Hello')
+                //     );
+                //   }
+                // )
               ],
             ),
             ),

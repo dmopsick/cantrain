@@ -20,4 +20,3 @@ routes.get('/findByUser/:userId', async (req, res) => {
 module.exports = {
     routes,
 }
-

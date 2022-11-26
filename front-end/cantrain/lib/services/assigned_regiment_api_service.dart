@@ -8,6 +8,8 @@ class AssignedRegimentApiService {
     var assignedRegimentList;
     var url = ('/assignedRegiment/getListbyUser/${user.id}');
 
+    print('Flag 0 $url');
+
     var response = await ApiService().get(url);
 
     if (response.statusCode == 200) {

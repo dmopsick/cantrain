@@ -9,7 +9,7 @@ const routes = express.Router({
     mergeParams: true
 });
 
-routes.get('getListByClient/:clientId', async (req, res) => {
+routes.get('/getListByClient/:clientId', async (req, res) => {
     const clientId = req.params.clientId;
 
     const assignedRegimentList = await getAssignedRegimentListByClient(clientId);
@@ -17,9 +17,9 @@ routes.get('getListByClient/:clientId', async (req, res) => {
     res.status(200).json(assignedRegimentList);
 });
 
-routes.get('getListByUser/:userId', async (req, res) => {
+routes.get('/getListbyUser/:userId', async (req, res) => {
     const userId = req.params.userId;
-
+    
     const assignedRegimentList = await getAssignedRegimentListByUser(userId);
 
     res.status(200).json(assignedRegimentList);
