@@ -1,3 +1,4 @@
+import 'package:cantrain/models/assigned_regiment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,14 +15,14 @@ class AssignedRegimentView extends StatefulWidget {
 
 class _AssignedRegimentView extends State<AssignedRegimentView> {
   bool isLoaded = false;
-
+  AssignedRegiment? assignedRegiment;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Assigned Regiment',
+          '${assignedRegiment?.regiment.name}',
           style: GoogleFonts.bebasNeue(),
         ),
       ),

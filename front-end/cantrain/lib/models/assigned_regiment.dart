@@ -6,7 +6,7 @@ import 'package:cantrain/models/regiment.dart';
 // From JSON for a list of assigned regiments
 List<AssignedRegiment> assignedRegimentListWithoutClientsFromJson(String jsonString) => List<AssignedRegiment>.from(json.decode(jsonString).map((x) => AssignedRegiment.fromJsonWithoutClient(x))); 
 
-// FROM Json for a single assigned regiment
+// From JSON for a single assigned regiment
 String assignedRegimentListToJson(List<AssignedRegiment> assignedRegimentList) => json.encode(List<dynamic>.from(assignedRegimentList.map((x) => x.toJson())));
 
 // To JSON for a single regiment 
@@ -15,13 +15,13 @@ String assignedRegimentListToJson(List<AssignedRegiment> assignedRegimentList) =
 
 class AssignedRegiment {
 
-  static const String jsonId = "ASSIGNED_REGIMENT_ID";
-  static const String jsonRegimentId = "REGIMENT_ID";
-  static const String jsonClientId = "CLIENT_ID";
-  static const String jsonCurrentCycle = "CURRENT_CYCLE";
-  static const String jsonActive = "REGIMENT_ACTIVE";
-  static const String jsonArchive = "REGIMENT_ARCHIVE";
-  static const String jsonStatus = "REGIMENT_STATUS";
+  static const String jsonId = 'ASSIGNED_REGIMENT_ID';
+  static const String jsonRegimentId = 'REGIMENT_ID';
+  static const String jsonClientId = 'CLIENT_ID';
+  static const String jsonCurrentCycle = 'CURRENT_CYCLE';
+  static const String jsonActive = 'REGIMENT_ACTIVE';
+  static const String jsonArchive = 'REGIMENT_ARCHIVE';
+  static const String jsonStatus = 'REGIMENT_STATUS';
   
   AssignedRegiment({
     required this.id,
