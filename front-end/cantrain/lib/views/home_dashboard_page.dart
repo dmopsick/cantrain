@@ -1,6 +1,7 @@
 import 'package:cantrain/models/assigned_regiment.dart';
 import 'package:cantrain/models/trainer.dart';
 import 'package:cantrain/services/assigned_regiment_api_service.dart';
+import 'package:cantrain/views/assigned_regiment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cantrain/models/dbuser.dart';
@@ -32,8 +33,12 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   }
 
   // Function to open up selected Assigned Regiment
-  void openAssignedRegiment(BuildContext context) {
+  openAssignedRegiment(BuildContext context, assignedRegimentId) {
     print("Flag 10");
+
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return AssignedRegimentView(assignedRegimentId : assignedRegimentId);
+    }));
   }
 
   // I will need to call this function from every file
@@ -90,7 +95,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        print("Flag 2 ${assignedRegimentList![index].id}");
+                        openAssignedRegiment(assignedRegimentList![index].id);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
