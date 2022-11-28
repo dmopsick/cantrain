@@ -72,6 +72,10 @@ async function getAssignedRegimentListByUser(userId) {
         SELECT * FROM CANTRAINDB.ASSIGNED_REGIMENT ar
         INNER JOIN CANTRAINDB.REGIMENT r 
         ON ar.REGIMENT_ID = r.REGIMENT_ID
+        INNER JOIN CANTRAINDB.TRAINER t 
+        ON r.TRAINER_ID = t.TRAINER_ID
+        INNER JOIN CANTRAINDB.USER u 
+        ON t.USER_ID = u.USER_ID
         WHERE ar.CLIENT_ID = (SELECT CLIENT_ID FROM CANTRAINDB.CLIENT c
             WHERE c.USER_ID = ${userId});
     `);
@@ -104,10 +108,26 @@ async function getNextAssignedWorkoutOfAssignedRegiment(assignedRegimentId) {
     return null;
 }
 
+/**
+ * Load a list of assigned workouts for an assigned regiment
+ * @param {int} assignedRegimentId 
+ * @returns 
+ */
+async function getAssignedWorkoutListByAssignedRegiment(assignedRegimentId) {
+    const [assignedWorkoutList] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_WORKOUT aw
+        INNER JOIN CANTRAINDB.WORKOUT w
+        ON w.WORKOUT_ID = aw.WORKOUT_ID
+        WHERE aw.REGIMENT_ID = ${assignedRegimentId};
+        `);
+    return assignedWorkoutList;
+}
+
 module.exports = {
     getUserByEmail,
     getTrainerById,
     getClientByUserId,
     getAssignedRegimentListByClient,
     getAssignedRegimentListByUser,
+    getAssignedWorkoutListByAssignedRegiment,
 }
