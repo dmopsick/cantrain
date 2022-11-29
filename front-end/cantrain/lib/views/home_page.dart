@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> pages = [
     const HomeDashboardView(),
     const RecordsView(),
-    const AccountView()
+    const AccountView(),
   ];
 
   @override
@@ -46,14 +46,13 @@ class _HomeViewState extends State<HomeView> {
           child: GNav(
             gap: 8,
             onTabChange: (index) {
-              print(index);
               navigate(index);
             },
             backgroundColor: Colors.blue.shade900,
             color: Colors.white,
             activeColor: Colors.white,
             tabBackgroundColor: Colors.blue.shade800,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             tabs: const [
               GButton(
                 icon: Icons.home,

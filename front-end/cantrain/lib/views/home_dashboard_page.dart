@@ -1,7 +1,12 @@
+import 'package:cantrain/models/assigned_regiment.dart';
+import 'package:cantrain/models/trainer.dart';
+import 'package:cantrain/services/assigned_regiment_api_service.dart';
+import 'package:cantrain/views/assigned_regiment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cantrain/models/dbuser.dart';
 import 'package:cantrain/services/api_service.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeDashboardView extends StatefulWidget {
   const HomeDashboardView({super.key});
@@ -16,21 +21,37 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   bool isLoaded = false;
   // The current user's info from the DB
   DBUser? currentUser;
+  Trainer? trainer;
+  List<AssignedRegiment>? assignedRegimentList;
 
   @override
   void initState() {
     super.initState();
-    loadUser(authUser.email);
+
+    // Load the user record
+    loadFromDB(authUser.email);
+  }
+
+  // Function to open up selected Assigned Regiment
+  openAssignedRegiment(BuildContext context, assignedRegimentId) {
+    print("Flag 10");
+
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return AssignedRegimentView(assignedRegimentId : assignedRegimentId);
+    }));
   }
 
   // I will need to call this function from every file
   // Will need to house it somewhere else and import it or something
-  loadUser(email) async {
+  loadFromDB(email) async {
     // Load the user from the API
     currentUser = await ApiService().getUserByEmail(email);
 
     // If the user is loaded, load the UI
     if (currentUser != null) {
+      // Load the assigned regiments for the currentUser
+      assignedRegimentList = await AssignedRegimentApiService().getAssignedRegimentListByUser(currentUser);
+
       setState(() {
         isLoaded = true;
       });
@@ -39,33 +60,72 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Visibility(
-        // Show the UI after loading what we need from the DB
+      return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Assigned Regiments',
+           style: GoogleFonts.bebasNeue(),
+          ),
+      ),
+      body: Visibility(
         visible: isLoaded,
-        child: Scaffold (
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Signed in as ${currentUser?.email}. Hello ${currentUser?.firstName} ${currentUser?.lastName}'),
-                MaterialButton (
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-                  },
-                  color: Colors.indigo[700],
-                  child: const Text(
-                    'Sign Out',
-                    style : TextStyle (color: Colors.white),
-                  ),
-                )
-              ],
-            ),
-            ),
-      
+        replacement: const Center(
+          child: CircularProgressIndicator(),
         ),
-      );
-    
-    }
-
+        child: ListView.builder(
+          itemCount: assignedRegimentList?.length,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[300],
+                    ),
+                    child: const Icon(
+                        Icons.fitness_center,
+                        size: 50
+                      ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        openAssignedRegiment(assignedRegimentList![index].id);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            assignedRegimentList![index].regiment.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            assignedRegimentList![index].regiment.name ?? '',
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.bebasNeue(),
+                          ),
+                                      
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
+}
