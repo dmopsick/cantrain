@@ -28,7 +28,8 @@ class _RecordsViewState extends State<RecordsView> {
           body: Center(
             child: Column(
               children: const [
-                Text('Records Page')
+                SizedBox(height: 200),
+                Text('Records Page not implemented at this time.')
               ],
             )
           )

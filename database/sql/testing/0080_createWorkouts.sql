@@ -10,10 +10,10 @@ VALUES (60, 10, 'Legs A', 'Leg day focused around squats.');
 
 -- Create 3 Workout Records
 INSERT INTO CANTRAINDB.WORKOUT (WORKOUT_ID, TRAINER_ID, WORKOUT_NAME, WORKOUT_DESCRIPTION)
-VALUES (65, 20, 'Push B', null);
+VALUES (65, 10, 'Push B', null);
 
 INSERT INTO CANTRAINDB.WORKOUT (WORKOUT_ID, TRAINER_ID, WORKOUT_NAME, WORKOUT_DESCRIPTION)
-VALUES (70, 20, 'Pull B', 'Lots of rows');
+VALUES (70, 10, 'Pull B', 'Lots of rows');
 
 INSERT INTO CANTRAINDB.WORKOUT (WORKOUT_ID, TRAINER_ID, WORKOUT_NAME, WORKOUT_DESCRIPTION)
-VALUES (75, 20, 'Legs B', 'Leg day focused around front squats');
+VALUES (75, 10, 'Legs B', 'Leg day focused around front squats');

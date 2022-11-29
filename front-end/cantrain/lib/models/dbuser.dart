@@ -21,7 +21,7 @@ class DBUser {
     required this.email,
     required this.firstName,
     required this.lastName,
-    this.preferredName = '',
+    this.preferredName,
     required this.active,
     required this.unitsOfMeasurementSwitch,
   });
@@ -50,8 +50,8 @@ class DBUser {
     jsonFirstName: firstName,
     jsonLastName: lastName,
     jsonPreferredName: preferredName,
-    jsonActive: active,
-    jsonUnitsOfMeasurementSwitch: unitsOfMeasurementSwitch,
+    jsonActive: Util().convertBoolToShort(active),
+    jsonUnitsOfMeasurementSwitch: Util().convertBoolToShort(unitsOfMeasurementSwitch),
   };
 
 }
