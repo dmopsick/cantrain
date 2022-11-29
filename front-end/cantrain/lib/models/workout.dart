@@ -14,26 +14,26 @@ class Workout {
   Workout({
     required this.id,
     required this.trainerId,
-    required this.workoutName,
+    required this.name,
     this.workoutDescription,
   });
 
   int id;
   int trainerId;
-  String workoutName;
+  String name;
   String? workoutDescription;
 
   factory Workout.fromJson(Map<String, dynamic> json) => Workout(
     id: json[jsonId],
     trainerId: json[jsonTrainerId],
-    workoutName: json[jsonWorkoutName],
+    name: json[jsonWorkoutName],
     workoutDescription: json[jsonWorkoutDescription],
   );
 
   Map<String, dynamic> toJson() => {
     jsonId: id,
     jsonTrainerId: trainerId,
-    jsonWorkoutName: workoutName,
+    jsonWorkoutName: name,
     jsonWorkoutDescription: workoutDescription,
   };
   

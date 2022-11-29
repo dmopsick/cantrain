@@ -31,6 +31,12 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
     loadFromDB(assignedRegimentId);
   }
 
+  openAssignedWorkout(BuildContext context, assignedWorkoutId) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return AssignedWorkoutView(assignedWorkoutId: assignedWorkoutId);
+    }));
+  }
+
   loadFromDB(assignedRegimentId) async {
     assignedRegiment = await AssignedRegimentApiService().getAssignedRegimentById(assignedRegimentId);
 
@@ -85,7 +91,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
                         children: [
                           Center(
                             child: Text(
-                              assignedWorkoutList![index].workout.workoutName,
+                              assignedWorkoutList![index].workout.name,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(

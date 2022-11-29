@@ -4,7 +4,8 @@ import 'dart:convert';
 // From JSON for a list of assigned workouts
 List<AssignedWorkout> assignedWorkoutListWithoutRegimentFromJson(String jsonString) => List<AssignedWorkout>.from(json.decode(jsonString).map((x) => AssignedWorkout.fromJsonWithoutRegiment(x)));
 
-// From JSON for a single assignedWorkout
+// To JSON for a single assignedWorkout
+String assignedWOrkoutListToJson(List<AssignedWorkout> assignedWorkoutList) => json.encode(List<dynamic>.from(assignedWorkoutList.map((x) => x.toJson())));
 
 class AssignedWorkout {
 
