@@ -4,11 +4,9 @@ import 'package:cantrain/services/api_service.dart';
 
 class AssignedRegimentApiService {
 
-  Future<List<AssignedRegiment>?> getAssignedRegimentListByUser(user) async {
+  Future<List<AssignedRegiment>?> getAssignedRegimentListByUser(userId) async {
     var assignedRegimentList;
-    var url = ('/assignedRegiment/getListbyUser/${user.id}');
-
-    print('Flag 0 $url');
+    var url = ('/assignedRegiment/getListbyUser/$userId');
 
     var response = await ApiService().get(url);
 
@@ -19,6 +17,21 @@ class AssignedRegimentApiService {
     }
 
     return assignedRegimentList;
+  }
+
+  Future<AssignedRegiment?> getAssignedRegimentById(assignedRegimentId) async {
+    var assignedRegiment;
+    var url = ('/assignedRegiment/findById/$assignedRegimentId');
+
+    var response = await ApiService().get(url);
+
+    if (response.statusCode == 200) {
+      var json = response.body;
+
+      assignedRegiment = assignedRegimentWithoutClientFromJson(json);
+    }
+
+    return assignedRegiment;
   }
 
 }

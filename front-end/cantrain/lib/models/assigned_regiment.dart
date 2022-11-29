@@ -6,10 +6,11 @@ import 'package:cantrain/models/regiment.dart';
 // From JSON for a list of assigned regiments
 List<AssignedRegiment> assignedRegimentListWithoutClientsFromJson(String jsonString) => List<AssignedRegiment>.from(json.decode(jsonString).map((x) => AssignedRegiment.fromJsonWithoutClient(x))); 
 
-// From JSON for a single assigned regiment
-String assignedRegimentListToJson(List<AssignedRegiment> assignedRegimentList) => json.encode(List<dynamic>.from(assignedRegimentList.map((x) => x.toJson())));
+// FRom JSON for a single list of assigned regiments
+assignedRegimentWithoutClientFromJson(String jsonString) => AssignedRegiment.fromJsonWithoutClient(json.decode(jsonString)[0]);
 
 // To JSON for a single regiment 
+String assignedRegimentListToJson(List<AssignedRegiment> assignedRegimentList) => json.encode(List<dynamic>.from(assignedRegimentList.map((x) => x.toJson())));
 
 // To JSON for a list of assigned regiments | May not need this
 

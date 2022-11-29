@@ -119,8 +119,27 @@ async function getAssignedWorkoutListByAssignedRegiment(assignedRegimentId) {
         INNER JOIN CANTRAINDB.WORKOUT w
         ON w.WORKOUT_ID = aw.WORKOUT_ID
         WHERE aw.REGIMENT_ID = ${assignedRegimentId};
-        `);
+    `);
     return assignedWorkoutList;
+}
+
+/**
+ * Load an AssignedRegiment record by id
+ * @param {int} assignedRegimentId 
+ * @returns 
+ */
+async function getAssignedRegimentById(assignedRegimentId) {
+    const [assignedRegiment] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_REGIMENT ar
+        INNER JOIN CANTRAINDB.REGIMENT r
+        ON ar.REGIMENT_ID = r.REGIMENT_ID
+        INNER JOIN CANTRAINDB.TRAINER t 
+        ON r.TRAINER_ID = t.TRAINER_ID
+        INNER JOIN CANTRAINDB.USER u 
+        ON t.USER_ID = u.USER_ID
+        WHERE ar.ASSIGNED_REGIMENT_ID = ${assignedRegimentId};
+    `);
+    return assignedRegiment;
 }
 
 module.exports = {
@@ -130,4 +149,5 @@ module.exports = {
     getAssignedRegimentListByClient,
     getAssignedRegimentListByUser,
     getAssignedWorkoutListByAssignedRegiment,
+    getAssignedRegimentById,
 }
