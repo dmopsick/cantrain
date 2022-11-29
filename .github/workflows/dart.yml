@@ -18,7 +18,7 @@ jobs:
     steps:
       
       - name: Navigate to Flutter project
-        run: cd /front-end/cantrain
+        run: cd front-end/cantrain
     
       - uses: actions/checkout@v3
 
