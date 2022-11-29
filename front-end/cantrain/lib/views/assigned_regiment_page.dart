@@ -1,6 +1,7 @@
 import 'package:cantrain/models/assigned_regiment.dart';
 import 'package:cantrain/models/assigned_workout.dart';
 import 'package:cantrain/services/assigned_regiment_api_service.dart';
+import 'package:cantrain/services/assigned_workout_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,8 +27,6 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
   @override
   void initState() {
     super.initState();
-
-    print("Flag 15: $assignedRegimentId");
     
     loadFromDB(assignedRegimentId);
   }
@@ -36,7 +35,8 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
     assignedRegiment = await AssignedRegimentApiService().getAssignedRegimentById(assignedRegimentId);
 
     if (assignedRegiment != null) {
-      print("Time to go ahead and load the assigned workout list");
+
+      assignedWorkoutList = await AssignedWorkoutApiService().getAssignedWorkoutListByAssignedRegiment(assignedRegimentId);
 
       setState(() {
         isLoaded = true;
@@ -59,6 +59,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
           child: CircularProgressIndicator(),
         ),
         child: ListView.builder(
+          itemCount: assignedWorkoutList?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(16),
@@ -73,7 +74,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
                     ),
                     child: const Icon(Icons.fitness_center, size: 50),
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 20),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
@@ -82,20 +83,24 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            assignedWorkoutList![index].workout.workoutName,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+                          Center(
+                            child: Text(
+                              assignedWorkoutList![index].workout.workoutName,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          Text(
-                            'Bottom Text' ?? '',
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.bebasNeue(),
+                          Center(
+                            child: Text(
+                              assignedWorkoutList![index].workout.workoutDescription ?? '',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              // style: GoogleFonts.bebasNeue(),
+                            ),
                           ),
                         ],
                       ),

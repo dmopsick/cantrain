@@ -118,7 +118,10 @@ async function getAssignedWorkoutListByAssignedRegiment(assignedRegimentId) {
         SELECT * FROM CANTRAINDB.ASSIGNED_WORKOUT aw
         INNER JOIN CANTRAINDB.WORKOUT w
         ON w.WORKOUT_ID = aw.WORKOUT_ID
-        WHERE aw.REGIMENT_ID = ${assignedRegimentId};
+        WHERE aw.REGIMENT_ID = 
+            (SELECT REGIMENT_ID 
+                FROM CANTRAINDB.ASSIGNED_REGIMENT 
+                WHERE ASSIGNED_REGIMENT_ID = ${assignedRegimentId});
     `);
     return assignedWorkoutList;
 }

@@ -73,7 +73,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
           itemCount: assignedRegimentList?.length,
           itemBuilder: (context, index) {
             return Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 children: [
                   Container(
@@ -84,7 +84,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                       color: Colors.grey[300],
                     ),
                     child: const Icon(
-                        Icons.fitness_center,
+                        Icons.list,
                         size: 50
                       ),
                   ),
@@ -107,7 +107,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                             ),
                           ),
                           Text(
-                            'Trainer: ${assignedRegimentList![index].regiment.trainer} ${assignedRegimentList![index].regiment.trainer.user.lastName}' ?? '',
+                            'Trainer: ${assignedRegimentList![index].regiment.trainer.user.firstName} ${assignedRegimentList![index].regiment.trainer.user.lastName}' ?? '',
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.bebasNeue(),
