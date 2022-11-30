@@ -85,7 +85,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        print("Flag 1");
+                        openAssignedWorkout(context, assignedWorkoutList![index].id);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

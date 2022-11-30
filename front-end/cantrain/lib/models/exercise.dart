@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cantrain/utils/util.dart';
+
 Exercise exerciseFromJson(String jsonString) => Exercise.fromJson(json.decode(jsonString)[0]);
 
 String exerciseToJson(Exercise exercise) => json.encode(exercise.toJson());
@@ -35,7 +37,7 @@ class Exercise{
     name: json[jsonName],
     instructions: json[jsonInstructions],
     videoLink: json[jsonVideoLink],
-    public: json[jsonPublic],
+    public: Util().convertShortToBool(json[jsonPublic]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -44,7 +46,7 @@ class Exercise{
     jsonName: name,
     jsonInstructions: instructions,
     jsonVideoLink: videoLink,
-    jsonPublic: public,
+    jsonPublic: Util().convertBoolToShort(public),
   };
 
 }
