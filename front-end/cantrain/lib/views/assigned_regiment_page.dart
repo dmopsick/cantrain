@@ -2,6 +2,7 @@ import 'package:cantrain/models/assigned_regiment.dart';
 import 'package:cantrain/models/assigned_workout.dart';
 import 'package:cantrain/services/assigned_regiment_api_service.dart';
 import 'package:cantrain/services/assigned_workout_api_service.dart';
+import 'package:cantrain/views/assigned_workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +22,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
   AssignedRegiment? assignedRegiment;
   List<AssignedWorkout>? assignedWorkoutList;
 
-  // Constructor to take in specified int for AssignedRegiment
+  // Constructor to take assignedRegimentId
   _AssignedRegimentView(int? this.assignedRegimentId);
 
   @override

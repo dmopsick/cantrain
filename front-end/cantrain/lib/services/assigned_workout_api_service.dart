@@ -19,4 +19,19 @@ class AssignedWorkoutApiService {
     return assignedWorkoutList;
   }
 
+  Future<AssignedWorkout> getAssignedWorkoutById(assignedWorkoutId) async {
+    var assignedWorkout;
+    var url = ('/assignedWorkout/findById/$assignedWorkoutId');
+
+    var response = await ApiService().get(url);
+
+    if (response.statusCode == 200) {
+      var json = response.body;
+
+      assignedWorkout = assignedWorkoutWithoutRegimentFromJson(json);
+    }
+
+    return assignedWorkout;
+  }
+
 }

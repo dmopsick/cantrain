@@ -7,6 +7,9 @@ List<AssignedWorkout> assignedWorkoutListWithoutRegimentFromJson(String jsonStri
 // To JSON for a single assignedWorkout
 String assignedWOrkoutListToJson(List<AssignedWorkout> assignedWorkoutList) => json.encode(List<dynamic>.from(assignedWorkoutList.map((x) => x.toJson())));
 
+// From JSON for a single workout
+AssignedWorkout assignedWorkoutWithoutRegimentFromJson(String jsonString) => AssignedWorkout.fromJsonWithoutRegiment(json.decode(jsonString)[0]);
+
 class AssignedWorkout {
 
   static const String jsonId = 'ASSIGNED_WORKOUT_ID';
