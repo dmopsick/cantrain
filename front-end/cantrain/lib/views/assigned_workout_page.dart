@@ -106,7 +106,6 @@ class _AssignedWorkoutViewState extends State<AssignedWorkoutView> {
                               assignedExerciseList![index].exercise.instructions ?? '',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              // style: GoogleFonts.bebasNeue(),
                             ),
                           ),
                         ],

@@ -71,7 +71,13 @@ class _AccountViewState extends State<AccountView> {
                     children: [
                       const SizedBox(height: 25),
 
-                      const Text('Email: '),
+                      Text('Email: ',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue.shade900,
+                            fontWeight: FontWeight.bold,
+                        ),
+                      ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -85,6 +91,9 @@ class _AccountViewState extends State<AccountView> {
                             padding: const EdgeInsets.only(left: 25),
                             child: TextField(
                               enabled: false,
+                              style: TextStyle (
+                                color: Colors.blue.shade900,
+                              ),
                               controller: _emailController,
                               decoration: const InputDecoration(
                                   border: InputBorder.none, hintText: 'Email'),
@@ -94,7 +103,13 @@ class _AccountViewState extends State<AccountView> {
                       ),
                       const SizedBox(height: 20),
 
-                      const Text('First Name: '),
+                      Text('First Name: ',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue.shade900,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -108,6 +123,9 @@ class _AccountViewState extends State<AccountView> {
                             padding: const EdgeInsets.only(left: 25),
                             child: TextField(
                               enabled: false,
+                              style: TextStyle (
+                                color: Colors.blue.shade900,
+                              ),
                               controller: _firstNameController,
                               decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -118,7 +136,13 @@ class _AccountViewState extends State<AccountView> {
                       ),
                       const SizedBox(height: 20),
                       
-                      const Text('Last Name: '),
+                      Text('Last Name: ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue.shade900,
+                            fontWeight: FontWeight.bold,
+                          ),
+                      ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -132,6 +156,9 @@ class _AccountViewState extends State<AccountView> {
                             padding: const EdgeInsets.only(left: 25),
                             child: TextField(
                               enabled: false,
+                              style: TextStyle (
+                                color: Colors.blue.shade900,
+                              ),
                               controller: _lastNameController,
                               decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -142,7 +169,13 @@ class _AccountViewState extends State<AccountView> {
                       ),
                       
                       const SizedBox(height: 20),
-                      const Text('Preferred Name: '),
+                      Text('Preferred Name: ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue.shade900,
+                            fontWeight: FontWeight.bold,
+                          ),
+                      ),
                       
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -156,6 +189,9 @@ class _AccountViewState extends State<AccountView> {
                             padding: const EdgeInsets.only(left: 25),
                             child: TextField(
                               enabled: false,
+                              style: TextStyle (
+                                color: Colors.blue.shade900,
+                              ),
                               controller: _preferredNameController,
                               decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -172,9 +208,15 @@ class _AccountViewState extends State<AccountView> {
                           FirebaseAuth.instance.signOut();
                         },
                         color: Colors.indigo[700],
-                        child: const Text(
-                          'Sign Out',
-                          style : TextStyle (color: Colors.white),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Sign Out',
+                            style : TextStyle (
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
                         ),
                       )
 

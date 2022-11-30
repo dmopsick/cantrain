@@ -28,11 +28,12 @@ class _RecordsViewState extends State<RecordsView> {
           backgroundColor: Colors.blueGrey[200],
           body: Center(
             child: Column(
-              children: const [
-                SizedBox(height: 200),
-                Text('Records Page yet to be implemented.',
+              children: [
+                const SizedBox(height: 200),
+                Text('No records to display at this time.',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 24,
+                    color: Colors.blue.shade900,
                   ),
                 ),
               ],

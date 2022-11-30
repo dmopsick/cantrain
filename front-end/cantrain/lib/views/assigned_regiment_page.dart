@@ -80,7 +80,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.grey[300],
                     ),
-                    child: const Icon(Icons.fitness_center, size: 50),
+                    child: const Icon(Icons.hardware, size: 50),
                   ),
                   const SizedBox(width: 20),
                   Expanded(
