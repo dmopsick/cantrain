@@ -22,6 +22,10 @@ const {
     routes: assignedWorkoutRoutes,
 } = require('./assignedWorkout/routes');
 
+const {
+    routes: assignedExerciseRoutes,
+} = require('./assignedExercise/routes');
+
 const app = express();
 
 app.use(cors());
@@ -31,5 +35,6 @@ app.use('/trainer', trainerRoutes);
 app.use('/client', clientRoutes);
 app.use('/assignedRegiment', assignedRegimentRoutes);
 app.use('/assignedWorkout', assignedWorkoutRoutes);
+app.use('/assignedExercise', assignedExerciseRoutes);
 
 module.exports = app;

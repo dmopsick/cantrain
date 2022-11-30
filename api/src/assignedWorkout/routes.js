@@ -1,7 +1,8 @@
 const express = require('express');
 
 const {
-    getAssignedWorkoutListByAssignedRegiment : getAssignedWorkoutListByAssignedRegiment
+    getAssignedWorkoutListByAssignedRegiment : getAssignedWorkoutListByAssignedRegiment,
+    getAssignedWorkoutById : getAssignedWorkoutById,
 } = require('../database');
 
 const routes = express.Router({
@@ -14,6 +15,14 @@ routes.get('/getListByAssignedRegiment/:assignedRegimentId', async (req, res) =>
     const assignedWorkoutList = await getAssignedWorkoutListByAssignedRegiment(assignedRegimentId);
 
     res.status(200).json(assignedWorkoutList);
+});
+
+routes.get('/findById/:assignedWorkoutId', async (req, res) => {
+    const assignedWorkoutId = req.params.assignedWorkoutId;
+
+    const assignedWorkout = await getAssignedWorkoutById(assignedWorkoutId);
+    
+    res.status(200).json(assignedWorkout);
 });
 
 module.exports = {

@@ -118,10 +118,9 @@ async function getAssignedWorkoutListByAssignedRegiment(assignedRegimentId) {
         SELECT * FROM CANTRAINDB.ASSIGNED_WORKOUT aw
         INNER JOIN CANTRAINDB.WORKOUT w
         ON w.WORKOUT_ID = aw.WORKOUT_ID
-        WHERE aw.REGIMENT_ID = 
-            (SELECT REGIMENT_ID 
-                FROM CANTRAINDB.ASSIGNED_REGIMENT 
-                WHERE ASSIGNED_REGIMENT_ID = ${assignedRegimentId});
+        WHERE aw.REGIMENT_ID = (SELECT REGIMENT_ID 
+            FROM CANTRAINDB.ASSIGNED_REGIMENT 
+            WHERE ASSIGNED_REGIMENT_ID = ${assignedRegimentId});
     `);
     return assignedWorkoutList;
 }
@@ -145,12 +144,49 @@ async function getAssignedRegimentById(assignedRegimentId) {
     return assignedRegiment;
 }
 
+async function getAssignedWorkoutById(assignedWorkoutId) {
+    const [assignedWorkout] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_WORKOUT aw
+        INNER JOIN CANTRAINDB.WORKOUT w
+        ON w.WORKOUT_ID = aw.WORKOUT_ID
+        WHERE aw.ASSIGNED_WORKOUT_ID = ${assignedWorkoutId};
+    `);
+    return assignedWorkout;
+}
+
+async function getAssignedExerciseListByAssignedWorkout(assignedWorkoutId) {
+    const [assignedExerciseList] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_EXERCISE ae
+        INNER JOIN CANTRAINDB.EXERCISE e
+        ON ae.EXERCISE_ID = e.EXERCISE_ID
+        WHERE ae.WORKOUT_ID = (SELECT WORKOUT_ID 
+            FROM CANTRAINDB.ASSIGNED_WORKOUT 
+            WHERE ASSIGNED_WORKOUT_ID = ${assignedWorkoutId});
+    `);
+    return assignedExerciseList;
+}
+
+async function getAssignedExerciseById(assignedExerciseId) {
+    const [assignedExercise] = await pool.query(`
+        SELECT * FROM CANTRAINDB.ASSIGNED_EXERCISE ae
+        INNER JOIN CANTRAINDB.EXERCISE e
+        ON ae.EXERCISE_ID = e.EXERCISE_ID
+        WHERE ae.ASSIGNED_EXERCISE_ID = ${assignedExerciseId};
+    `);
+    return assignedExercise;
+}
+
+// TODO I would split up all these functions into different files
+// Then have maybe this main database file be the one that executes the actual query
 module.exports = {
     getUserByEmail,
     getTrainerById,
     getClientByUserId,
     getAssignedRegimentListByClient,
     getAssignedRegimentListByUser,
-    getAssignedWorkoutListByAssignedRegiment,
     getAssignedRegimentById,
+    getAssignedWorkoutListByAssignedRegiment,
+    getAssignedWorkoutById,
+    getAssignedExerciseListByAssignedWorkout,
+    getAssignedExerciseById,
 }
