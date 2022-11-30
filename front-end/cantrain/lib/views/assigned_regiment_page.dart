@@ -54,6 +54,7 @@ class _AssignedRegimentView extends State<AssignedRegimentView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         title: Text(
           '${assignedRegiment?.regiment.name}',

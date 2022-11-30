@@ -1,5 +1,6 @@
 import 'package:cantrain/services/assigned_exercise_api_service.dart';
 import 'package:cantrain/services/assigned_workout_api_service.dart';
+import 'package:cantrain/views/assigned_exercise_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cantrain/models/assigned_exercise.dart';
 import 'package:cantrain/models/assigned_workout.dart';
@@ -12,23 +13,29 @@ class AssignedWorkoutView extends StatefulWidget {
     final int? assignedWorkoutId;
 
     @override
-    State<AssignedWorkoutView> createState() => _AssignedWorkoutView(assignedWorkoutId);
+    State<AssignedWorkoutView> createState() => _AssignedWorkoutViewState(assignedWorkoutId);
 }
 
-class _AssignedWorkoutView extends State<AssignedWorkoutView> {
+class _AssignedWorkoutViewState extends State<AssignedWorkoutView> {
   bool isLoaded = false;
-  int ?assignedWorkoutId;
+  int? assignedWorkoutId;
   AssignedWorkout? assignedWorkout;
   List<AssignedExercise>? assignedExerciseList;
 
   // Constructor taking in the AssigendWorkoutId
-  _AssignedWorkoutView(int? this.assignedWorkoutId);
+  _AssignedWorkoutViewState(int? this.assignedWorkoutId);
 
   @override
   void initState() {
     super.initState();
 
     loadFromDB(assignedWorkoutId);
+  }
+
+  openAssignedExercise(BuildContext context, assignedExerciseId) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return AssignedExerciseView(assignedExerciseId: assignedExerciseId);
+    }));
   }
 
   loadFromDB(assignedWorkoutId) async {
@@ -46,6 +53,7 @@ class _AssignedWorkoutView extends State<AssignedWorkoutView> {
   @override
   Widget build(BuildContext  context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         title: Text(
           '${assignedWorkout?.workout.name}',
@@ -77,7 +85,7 @@ class _AssignedWorkoutView extends State<AssignedWorkoutView> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        print("Flag 2");
+                        openAssignedExercise(context, assignedExerciseList![index].exercise.id);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

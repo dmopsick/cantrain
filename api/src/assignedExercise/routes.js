@@ -17,7 +17,7 @@ routes.get('/getListByAssignedWorkout/:assignedWorkoutId', async (req, res) => {
     res.status(200).json(assignedExerciseList);
 });
 
-routes.get('findById/:assignedExerciseId', async (req, res) => {
+routes.get('/findById/:assignedExerciseId', async (req, res) => {
     const assignedExerciseId = req.params.assignedExerciseId;
 
     const assignedExercise = await getAssignedExerciseById(assignedExerciseId);

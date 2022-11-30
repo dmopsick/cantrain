@@ -69,7 +69,7 @@ class _AccountViewState extends State<AccountView> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 75),
+                      const SizedBox(height: 25),
 
                       const Text('Email: '),
 
@@ -182,6 +182,7 @@ class _AccountViewState extends State<AccountView> {
               ),
             ),
           ),
-        ));
+        )
+      );
   }
 }

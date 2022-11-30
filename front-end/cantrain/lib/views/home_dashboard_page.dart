@@ -58,6 +58,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+      backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         title: Text(
           'Assigned Regiments',
@@ -110,7 +111,6 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                             'Trainer: ${assignedRegimentList![index].regiment.trainer.user.firstName} ${assignedRegimentList![index].regiment.trainer.user.lastName}' ?? '',
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.bebasNeue(),
                           ),
                                       
                         ],
