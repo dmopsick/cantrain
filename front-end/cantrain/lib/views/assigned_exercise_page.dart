@@ -56,8 +56,6 @@ class _AssignedExerciseViewState extends State<AssignedExerciseView> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 50),
-          
                         Text('Exercise Name',
                           style: TextStyle(
                             fontSize: 18,
@@ -150,7 +148,7 @@ class _AssignedExerciseViewState extends State<AssignedExerciseView> {
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Center(child: Text(
-                                  '${assignedExercise?.exercise.instructions}',
+                                  '${assignedExercise?.notes}',
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.blue.shade900,

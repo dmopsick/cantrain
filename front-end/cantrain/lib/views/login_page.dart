@@ -60,6 +60,7 @@ class _LoginViewState extends State<LoginView> {
                         padding: EdgeInsets.all(16),
                         child: Text(
                           'Empowering trainers and connecting them to their clients',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
                           ),
