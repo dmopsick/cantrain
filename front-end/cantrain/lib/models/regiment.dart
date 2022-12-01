@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cantrain/models/trainer.dart';
+
 Regiment regimentFromJson(String jsonString) => Regiment.fromJson(json.decode(jsonString)[0]);
 
 String regimentToJson(Regiment regiment) => json.encode(regiment.toJson());
@@ -14,26 +16,26 @@ class Regiment {
 
   Regiment({
     required this.id,
-    required this.trainerId,
+    required this.trainer,
     required this.name,
     this.cycleLength,
   });
 
   int id;
-  int trainerId;
+  Trainer trainer;
   String name;
   int? cycleLength;
 
   factory Regiment.fromJson(Map<String, dynamic> json) => Regiment(
     id: json[jsonId],
-    trainerId: json[jsonTrainerId],
+    trainer: Trainer.fromJson(json),
     name: json[jsonName],
     cycleLength: json[jsonCycleLength],
   );
 
   Map<String, dynamic> toJson() => {
     jsonId: id,
-    jsonTrainerId: trainerId,
+    jsonTrainerId: trainer.id,
     jsonName: name,
     jsonCycleLength: cycleLength,
   };

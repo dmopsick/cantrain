@@ -25,11 +25,17 @@ class _RecordsViewState extends State<RecordsView> {
         // Show the UI after loading what we need from the DB
         visible: isLoaded,
         child: Scaffold (
+          backgroundColor: Colors.blueGrey[200],
           body: Center(
             child: Column(
-              children: const [
-                SizedBox(height: 200),
-                Text('Records Page not implemented at this time.')
+              children: [
+                const SizedBox(height: 200),
+                Text('No records to display at this time.',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.blue.shade900,
+                  ),
+                ),
               ],
             )
           )

@@ -1,6 +1,8 @@
 
 import 'dart:convert';
 
+import 'package:cantrain/models/dbuser.dart';
+
 Trainer trainerFromJson(String jsonString) => Trainer.fromJson(json.decode(jsonString)[0]);
 
 String trainerToJson(Trainer trainer) => json.encode(trainer.toJson());
@@ -15,21 +17,21 @@ class Trainer {
 
   Trainer({
     required this.id,
-    required this.userId,
+    required this.user,
     this.websiteUrl,
     this.youtubeUrl,
     this.instagramUrl,
   });
 
   int id;
-  String userId;
+  DBUser user;
   String? websiteUrl;
   String? youtubeUrl;
   String? instagramUrl;
   
   factory Trainer.fromJson(Map<String, dynamic> json) => Trainer(
     id: json[jsonId],
-    userId: json[jsonUserId],
+    user: DBUser.fromJson(json),
     websiteUrl: json[jsonWebsiteUrl],
     youtubeUrl: json[jsonYoutubeUrl],
     instagramUrl: json[jsonInstagramUrl],
@@ -37,7 +39,7 @@ class Trainer {
 
   Map<String, dynamic> toJson() => {
     jsonId: id,
-    jsonUserId: userId,
+    jsonUserId: user.id,
     jsonWebsiteUrl: websiteUrl,
     jsonYoutubeUrl: youtubeUrl,
     jsonInstagramUrl: instagramUrl,

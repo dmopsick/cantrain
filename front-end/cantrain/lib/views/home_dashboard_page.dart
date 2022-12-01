@@ -28,14 +28,11 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   void initState() {
     super.initState();
 
-    // Load the user record
     loadFromDB(authUser.email);
   }
 
   // Function to open up selected Assigned Regiment
   openAssignedRegiment(BuildContext context, assignedRegimentId) {
-    print("Flag 10");
-
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
       return AssignedRegimentView(assignedRegimentId : assignedRegimentId);
     }));
@@ -50,7 +47,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
     // If the user is loaded, load the UI
     if (currentUser != null) {
       // Load the assigned regiments for the currentUser
-      assignedRegimentList = await AssignedRegimentApiService().getAssignedRegimentListByUser(currentUser);
+      assignedRegimentList = await AssignedRegimentApiService().getAssignedRegimentListByUser(currentUser?.id);
 
       setState(() {
         isLoaded = true;
@@ -61,6 +58,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+      backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         title: Text(
           'Assigned Regiments',
@@ -76,7 +74,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
           itemCount: assignedRegimentList?.length,
           itemBuilder: (context, index) {
             return Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 children: [
                   Container(
@@ -87,7 +85,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                       color: Colors.grey[300],
                     ),
                     child: const Icon(
-                        Icons.fitness_center,
+                        Icons.list,
                         size: 50
                       ),
                   ),
@@ -95,7 +93,7 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        openAssignedRegiment(assignedRegimentList![index].id);
+                        openAssignedRegiment(context, assignedRegimentList![index].id);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,10 +108,9 @@ class _HomeDashboardViewState extends State<HomeDashboardView> {
                             ),
                           ),
                           Text(
-                            assignedRegimentList![index].regiment.name ?? '',
+                            'Trainer: ${assignedRegimentList![index].regiment.trainer.user.firstName} ${assignedRegimentList![index].regiment.trainer.user.lastName}' ?? '',
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.bebasNeue(),
                           ),
                                       
                         ],
