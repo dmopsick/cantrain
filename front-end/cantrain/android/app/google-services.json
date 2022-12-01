@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:425822633989:android:28dbbbe91e798684e1dc6c",
         "android_client_info": {
-          "package_name": "com.example.cantrain"
+          "package_name": "com.danmopsick.cantrain"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "425822633989-nlphesp9qam6bom3i0hbql4hv29g9pvp.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.cantrain"
+                "bundle_id": "com.mopsick.cantrain"
               }
             }
           ]

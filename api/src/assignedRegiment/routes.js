@@ -2,7 +2,8 @@ const express = require('express');
 
 const {
     getAssignedRegimentListByClient: getAssignedRegimentListByClient,
-    getAssignedRegimentListByUser: getAssignedRegimentListByUser
+    getAssignedRegimentListByUser: getAssignedRegimentListByUser,
+    getAssignedRegimentById : getAssignedRegimentById,
 } = require('../database');
 
 const routes = express.Router({
@@ -15,6 +16,14 @@ routes.get('/getListByClient/:clientId', async (req, res) => {
     const assignedRegimentList = await getAssignedRegimentListByClient(clientId);
 
     res.status(200).json(assignedRegimentList);
+});
+
+routes.get('/findById/:assignedRegimentId', async (req, res) =>  {
+    const assignedRegimentId = req.params.assignedRegimentId;
+
+    const assignedRegiment = await getAssignedRegimentById(assignedRegimentId);
+    
+    res.status(200).json(assignedRegiment);
 });
 
 routes.get('/getListbyUser/:userId', async (req, res) => {
